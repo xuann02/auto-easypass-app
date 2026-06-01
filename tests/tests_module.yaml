@@ -1,0 +1,4 @@
+appId: com.sima.ccna
+---
+- launchApp:
+    clearState: true

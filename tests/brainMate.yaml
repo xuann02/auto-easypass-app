@@ -1,0 +1,10 @@
+appId: com.edupass.ccna
+---
+- launchApp:
+    clearState: true
+
+
+
+
+
+

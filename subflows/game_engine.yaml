@@ -1,0 +1,29 @@
+appId: com.edupass.ccna
+---
+# nếu không xuất hiện popup submit thì k dừng lại
+- repeat: 
+    while:
+      notVisible: 
+        text: "Confirm"
+      condition: true
+    commands:
+      - runFlow:
+          commands:
+            
+
+      
+#  màn game
+# - runFlow:
+#     commands:
+#       # click trả lời đáp án random
+#       # có thể câu hỏi có 1 hay nhiều đáp án, phân biệt bằng text  Selected 0/2 answers hoặc không hiển thị gì
+#       # có thể có nhiều hơn 4 đáp án, hoặc ít hơn
+#       - tapOn:
+#            id: Answer-Correct
+
+
+# Bước 2: Nếu có thì lấy số lượng cần chọn
+- runScript:
+    file: parse_and_select.js
+
+

@@ -1,0 +1,19 @@
+appId: com.edupass.ccna
+---
+- launchApp:
+    clearState: true
+
+- tapOn:
+    text: Skip
+    optional: true
+
+- tapOn:
+    text: Start
+    optional: true
+
+# làm màn game
+# nộp bài
+# sang màn result
+# check core xem map với kết quả chạy được không
+- tapOn: Start Learning
+# vào màn home
