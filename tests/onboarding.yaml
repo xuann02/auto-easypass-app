@@ -4,12 +4,19 @@ appId: com.edupass.ccna
     clearState: true
 
 - tapOn:
-    text: Skip
-    optional: true
-
-- tapOn:
     text: Start
     optional: true
+- repeat:
+    times: 5
+    commands:
+      - runScript: ../scripts/answer_logic.js
+      - tapOn:
+          id: "Check-btn"
+      - tapOn:
+          id: "Next-btn"
+- tapOn: 
+    text: "Confirm"
+    
 
 # làm màn game
 # nộp bài
