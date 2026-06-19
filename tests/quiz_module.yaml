@@ -1,4 +1,131 @@
-appId: com.sima.ccna
+appId: com.edupass.ccna
 ---
-- launchApp:
-    clearState: true
+- tapOn:
+    id: "home-quiz-tab-btn"
+
+# # 1. Time quiz
+# - tapOn:
+#     id: "quiz-time-tab-btn"
+# - scrollUntilVisible:
+#     element: "1%"
+# - tapOn: "Start Quiz"
+# - repeat:
+#     while:
+#         notVisible: 
+#             # chưa thấy id popup Time's up
+#             - tapOn:
+#                  point: 55%,56%
+#     commands:
+        
+
+# - runFlow: ./ratting_app.yaml
+
+# 2. Random quiz
+- tapOn:
+    id: "quiz-random-tab-btn"
+- tapOn: "Start Quiz"
+- runFlow: ../subflows/game_engine.yaml
+- assertVisible: "Cancel"
+- assertVisible: "Confirm"
+- tapOn: "Cancel"
+- tapOn:
+    id: "Icon-save-btn"
+- tapOn:
+    id: "Submit-btn"
+- tapOn: "Confirm"
+- assertVisible: "Quiz Result"
+- tapOn:
+    id: "Back-btn"
+
+# 3. Save quiz
+- tapOn:
+    id: "quiz-save-tab-btn"
+- assertVisible:
+    text: "Saved Quiz.*"
+- assertVisible:
+    id: "Practice-btn"
+- tapOn:
+    id: "Practice-btn"
+- tapOn: "Start Quiz"
+- tapOn:
+    id: "Answer-Correct"
+- tapOn:
+    id: "Check-btn"
+- assertVisible:
+    id: "Answer-Explanation"
+- tapOn:
+    id: "Next-btn"
+- tapOn: "Confirm"
+- assertVisible: "Quiz Result"
+- tapOn:
+    id: "Back-btn"
+
+- runFlow: ./ratting_app.yaml
+- tapOn:
+    id: "Back-btn"
+
+# 4. Missed quiz
+- tapOn:
+    id: "quiz-missed-tab-btn"
+- assertVisible:
+    text: "Missed Quiz.*"
+- assertVisible: "Practice"
+- tapOn: "Practice"
+- tapOn: "Start Quiz"
+- runFlow: ../subflows/game_engine.yaml
+- assertVisible: "Cancel"
+- assertVisible: "Confirm"
+- tapOn: "Cancel"
+- tapOn:
+    id: "Submit-btn"
+- tapOn: "Confirm"
+- assertVisible: "Quiz Result"
+- tapOn:
+    id: "Back-btn"
+
+- tapOn:
+    id: "Back-btn"
+
+# 5. Hard quiz
+- tapOn:
+    id: "quiz-hard-tab-btn"
+- tapOn: "Start Quiz"
+- runFlow: ../subflows/game_engine.yaml
+- assertVisible: "Cancel"
+- assertVisible: "Confirm"
+- tapOn: "Cancel"
+- tapOn:
+    id: "Submit-btn"
+- tapOn: "Confirm"
+- assertVisible: "Quiz Result"
+- tapOn:
+    id: "Back-btn"
+- runFlow: ./ratting_app.yaml
+
+# 6. Custom test
+# - tapOn:
+#     id: "quiz-custom-tab-btn"
+# - assertVisible: "Setup Custom Quiz"
+# - tapOn: "Start Quiz"
+# - runFlow: ../subflows/game_time.yaml
+# - tapOn:
+#     id: "Submit-btn"
+# - tapOn: "Confirm"
+# - assertVisible: "Try Again"
+# - assertVisible: "New Quiz"
+# - tapOn:
+#     id: "Try-again-btn"
+# - runFlow: ../subflows/game_time.yaml
+# - tapOn:
+#     id: "Submit-btn"
+# - tapOn: "Confirm"
+# - assertVisible: "Try Again"
+# - assertVisible: "New Quiz"
+# - tapOn:
+#     id: "Next-quiz-btn"
+# - assertVisible: "Setup Custom Quiz"
+# - tapOn:
+#     id: "Back-btn"
+
+
+

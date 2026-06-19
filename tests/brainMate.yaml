@@ -1,10 +1,28 @@
 appId: com.edupass.ccna
 ---
-- launchApp:
-    clearState: true
+#1. Vào tab Study chọn topic đầu tiên
+- tapOn:
+    id: "home-study-tab-btn"
 
-
-
-
-
+- tapOn:
+    id: "topic_0"
+    optional: true
+- tapOn:
+    id: "Continue-btn"
+- assertVisible:
+    id: "icon-brainMate-btn"
+- tapOn:
+    id: "icon-brainMate-btn"
+- tapOn: "Enter your message here..."
+- inputText: "hi"
+- pressKey: Enter
+- repeat:
+    while:
+        notVisible: "Please try again later!"
+    times: 2
+    commands: 
+        - inputText: "hi"
+        - pressKey: Enter
+        - tapOn:
+            point: 2%,9%
 

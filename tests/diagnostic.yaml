@@ -1,4 +1,69 @@
-appId: com.sima.ccna
+appId: com.edupass.ccna
 ---
-- launchApp:
-    clearState: true
+# 1. Vào Diagnostic
+- tapOn:
+    id: "home-test-tab-btn"
+- tapOn:
+    id: "test-Diagnotic-tab-btn"
+# 2. Start để vao màn game
+- tapOn:
+    id: "Start-btn"
+- runFlow: ../subflows/game_engine.yaml
+# 3. Continue để tiếp tục làm Dia
+- tapOn:
+    id: "Back-btn"
+- tapOn:
+    id: "Continue-btn"
+- runFlow: ../subflows/game_engine.yaml
+# Save question
+- tapOn:
+    id: "Icon-save-btn"
+# 4. Nộp bài khi chưa hoàn thành
+- tapOn:
+    id: "Submit-btn"
+# 5. Cancel để huỷ trạng thái
+- tapOn: "Cancel"
+- tapOn:
+    id: "Submit-btn"
+# 6. Confirm để nộp
+- tapOn: "Confirm"
+
+# 7. Result game
+- assertVisible:
+    id: "Try-again-btn"
+- tapOn:
+    id: "Back-btn"
+
+# tắt popup review
+- runFlow: ../tests/ratting_app.yaml
+# 8. Màn Dia sau khi đã làm xong
+- assertVisible:
+    id: "View-result-btn"
+- assertVisible:
+    id: "Try-again-btn"
+
+- tapOn:
+    id: "View-result-btn"
+- assertVisible:
+    id: "Score-view"
+
+# 9. Try again
+- tapOn:
+    id: "Try-again-btn"
+
+- tapOn:
+    id: "Submit-btn"
+- tapOn: "Confirm"
+- tapOn:
+    id: "Back-btn"
+- runFlow: ../subflows/game_engine.yaml
+
+
+
+
+
+
+
+
+
+

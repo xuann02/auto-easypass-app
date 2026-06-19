@@ -1,0 +1,54 @@
+appId: com.edupass.ccna
+---
+- repeat:
+    while:
+      visible:
+        id: "Answer-Question"
+    commands:
+      # 1. Scroll load đáp án đúng
+      - scrollUntilVisible:
+          element:
+            id: "Answer-Correct"
+            index: 0
+          direction: DOWN
+          timeout: 20000
+
+      - evalScript: ${output.hasMultiple = false}
+      - evalScript: ${output.requiredText = ""}
+      - evalScript: ${output.required = 1}
+      
+      - runFlow:
+          when:
+            visible:
+              id: "hasMultiple-.*"
+          commands:
+            - copyTextFrom:
+                text: "Selected [0-9]+/[0-9]+ answers"
+            - evalScript: ${output.hasMultiple = true}
+            - evalScript: ${output.requiredText = maestro.copiedText}
+
+      - runScript:
+          file: ../scripts/utils.js
+
+      # 3. Click số đáp án đúng theo required
+      - evalScript: ${output.i = 0}
+
+      - repeat:
+          while:
+            true: ${output.i < output.required}
+          commands:
+            - tapOn:
+                id: "Answer-Correct"
+                index: ${output.i}
+
+            - evalScript: ${output.i = output.i + 1}
+
+      # 4. Click Check
+      - assertVisible:
+          id: "Check-btn"
+      - tapOn:
+          id: "Check-btn"
+      - assertVisible:
+          id: "Answer-Explanation"
+      - tapOn:
+          id: "Next-btn"

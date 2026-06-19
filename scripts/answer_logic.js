@@ -3,13 +3,13 @@
 // Kiểm tra nếu biến tồn tại trong env, nếu không thì lấy giá trị mặc định
 const _total = (typeof total !== 'undefined') ? Number(total) : 1;
 const _hasMultiple = (typeof hasMultiple !== 'undefined') ? (hasMultiple === true || hasMultiple === "true") : false;
-const _copiedText = (typeof copiedText !== 'undefined') ? copiedText : "";
+const _requiredText = (typeof requiredText !== 'undefined') ? String(requiredText) : "";
 
 let required = 1;
 
 // 2. Xử lý đếm số lượng đáp án cần chọn từ text "0/X"
-if (_hasMultiple && _copiedText) {
-    const match = _copiedText.match(/0\/(\d+)/);
+if (_hasMultiple && _requiredText) {
+    const match = _requiredText.match(/\/(\d+)/);
     if (match) {
         // Đảm bảo không chọn quá số lượng đáp án thực tế có sẵn (_total)
         required = Math.min(Number(match[1]) || 1, _total);
@@ -38,9 +38,6 @@ output.required = required;
 finalIndexes.forEach((val, index) => {
     output["idx" + index] = val;
 });
-
-
-
 
 
 

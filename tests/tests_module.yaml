@@ -1,4 +1,95 @@
-appId: com.sima.ccna
+appId: com.edupass.ccna
 ---
-- launchApp:
-    clearState: true
+- tapOn:
+    id: "home-test-tab-btn"
+
+# Practice test
+- tapOn:
+    id: "test-Practice-tab-btn"
+# 1. Click practice 
+- tapOn:
+    id: "practice-topic-item-0"
+- runFlow: ../subflows/game_engine.yaml
+- tapOn:
+    id: "Back-btn"
+- tapOn:
+    id: "practice-topic-item-0"
+- repeat: 
+    times: 3
+    commands:
+        - tapOn:
+            id: "Skip-btn"
+- tapOn:
+    id: "Submit-btn"
+# Cancel để huỷ trạng thái
+- tapOn: "Cancel"
+- tapOn:
+    id: "Submit-btn"
+# Confirm để nộp
+- tapOn: "Confirm"
+- assertVisible:
+    id: "Try-again-btn"
+- assertVisible:
+    id: "Review-answers-btn"
+# back lại tab Practice
+- tapOn:
+    id: "Back-btn"
+
+- runFlow: ./ratting_app.yaml
+
+
+# Final test
+- assertVisible:
+    id: "test-Final-tab-btn"
+- tapOn:
+    id: "test-Final-tab-btn"
+- tapOn:
+    id: "Start-btn"
+- runFlow: ../subflows/game_final.yaml
+- tapOn:
+    id: "Back-btn"
+- assertVisible:
+    id: "Continue-btn"
+- tapOn:
+    id: "Continue-btn"
+- repeat:
+    times: 3
+    commands:
+        - tapOn:
+            id: "Previous-btn"
+- assertVisible:
+    id: "Submit-btn"
+- tapOn:
+    id: "Submit-btn"
+# Cancel để huỷ trạng thái
+- tapOn: "Cancel"
+- tapOn:
+    id: "Submit-btn"
+# Confirm để nộp
+- tapOn: "Confirm"
+
+- assertVisible:
+    id: "Review-answers-btn"
+- assertVisible:
+    id: "Try-again-btn"
+- tapOn:
+    id: "Back-btn"
+- runFlow: ./ratting_app.yaml
+- assertVisible:
+    id: "View-result-btn"
+- assertVisible:
+    id: "Try-again-btn"
+- tapOn:
+    id: "View-result-btn"
+- assertVisible:
+    id: "Try-again-btn"
+- tapOn:
+    id: "Try-again-btn"
+- runFlow: ../subflows/game_final.yaml
+- tapOn:
+    id: "Submit-btn"
+# Confirm để nộp
+- tapOn: "Confirm"
+
+
+

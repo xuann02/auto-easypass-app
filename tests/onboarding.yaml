@@ -3,24 +3,27 @@ appId: com.edupass.ccna
 - launchApp:
     clearState: true
 
-- tapOn:
-    text: Start
-    optional: true
-- repeat:
-    times: 5
-    commands:
-      - runScript: ../scripts/answer_logic.js
-      - tapOn:
-          id: "Check-btn"
-      - tapOn:
-          id: "Next-btn"
-- tapOn: 
-    text: "Confirm"
+- evalScript: ${output.choice = Math.floor(Math.random() * 2)} 
     
+- runFlow:
+    when:
+      true: ${output.choice == 0}
+    commands:
+        - tapOn: 
+            text: "Skip"
 
-# làm màn game
-# nộp bài
-# sang màn result
-# check core xem map với kết quả chạy được không
-- tapOn: Start Learning
-# vào màn home
+- runFlow:
+    when: 
+        true: ${output.choice == 1}
+    commands:
+        - tapOn:
+            text: Start
+        - runFlow: ../subflows/game_engine.yaml
+        - tapOn:
+            id: "Submit-btn"
+        - tapOn: 
+            text: "Confirm"
+    
+        - tapOn: Start Learning
+
+

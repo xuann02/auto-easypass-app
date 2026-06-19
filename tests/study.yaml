@@ -1,4 +1,38 @@
 appId: com.sima.ccna
 ---
-- launchApp:
-    clearState: true
+#1. Vào tab Study chọn topic đầu tiên
+- tapOn:
+    id: "home-study-tab-btn"
+
+- tapOn:
+    id: "topic_0"
+    optional: true
+
+- tapOn:
+    id: "core-unlock-btn"
+    optional: true
+
+# 2. Làm game 
+- runFlow: ../subflows/game_correct.yaml
+
+# 3. Try again để làm lại
+- tapOn:
+    id: "Try-again-btn"
+
+- runFlow: ../subflows/game_correct.yaml
+
+# 4. Continue để làm tiếp
+- tapOn:
+    id: "Continue-btn"
+
+- runFlow: ../subflows/game_correct.yaml
+
+# 5. Back lại màn topic
+- tapOn:
+    id: "Back-btn"
+
+
+
+
+
+

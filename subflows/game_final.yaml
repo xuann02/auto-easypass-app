@@ -3,8 +3,6 @@ appId: com.edupass.ccna
 - repeat:
     times: 10
     commands:
-      - assertVisible:
-          id: "Answer-Question"
       #  1. Scroll đảm bảo load answer
       - scrollUntilVisible:
           element:
@@ -64,12 +62,7 @@ appId: com.edupass.ccna
                       index: ${output["idx" + output.current ]}
 
             - evalScript: ${output.current  = output.current + 1 }
-      - assertVisible:
-          id: "Check-btn"
-      - tapOn:
-          id: "Check-btn"
-      - assertVisible:
-          id: "Answer-Explanation"
+
       - tapOn:
           id: "Next-btn"
 

@@ -1,4 +1,6 @@
-appId: com.sima.ccna
+appId: com.edupass.ccna
 ---
-- launchApp:
-    clearState: true
+- assertVisible:
+    id: "popup-ratting-app-view"
+- tapOn: "Scrim"
+

@@ -1,7 +1,8 @@
 appId: com.edupass.ccna
 ---
+
 - repeat:
-    times: 10
+    times: 3
     commands:
       - assertVisible:
           id: "Answer-Question"

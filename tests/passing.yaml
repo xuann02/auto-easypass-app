@@ -1,4 +1,33 @@
 appId: com.sima.ccna
 ---
-- launchApp:
-    clearState: true
+- tapOn:
+    id: "home-study-tab-btn"
+- assertVisible:
+    id: "passing-improve-btn"
+- tapOn:
+    id: "passing-improve-btn"
+- tapOn: "Start"
+- runFlow: ../subflows/game_engine.yaml
+- assertVisible: "Cancel"
+- assertVisible: "Confirm"
+- tapOn: "Confirm"
+- assertVisible: "Improve Passing Chance"
+- assertVisible:
+    id: "Continue-btn"
+- tapOn:
+    id: "Continue-btn"
+- assertVisible: "Start"
+- tapOn: "Start"
+- tapOn:
+    id: "Submit-btn"
+- assertVisible: "Cancel"
+- assertVisible: "Confirm"
+- tapOn: "Confirm"
+- assertVisible: "Improve Passing Chance"
+- tapOn:
+    id: "Back-btn"
+- runFlow: ./ratting_app.yaml
+- assertVisible: "Topic Mode"
+
+
+
